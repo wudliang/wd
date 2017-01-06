@@ -1,0 +1,59 @@
+<div class="registpage" ng-controller="registCtrl">
+	<header class="bar bar-header bar-wd">
+		<a href="" class="button button-icon icon wd-icon wd-icon-arrow-back"
+			ng-click="goBack()"
+		></a>
+		<h2 class="title">注册</h2>
+	</header>
+	<ion-content class="has-header">
+		<div class="list mt-10">
+			<div class="item item-input">
+				<i class="icon placeholder-icon wd-icon wd-mobile-icon"></i>
+				<input type="text" placeholder="请输入手机号码"
+					ng-model="user.telephone"
+					class="has-delete"
+					ng-focus="user.showNumDel=true"
+					ng-blur="user.showNumDel=false"
+				/>
+				<i class="icon wd-icon-delete"
+					ng-class="{'show':user.telephone.length&&user.showNumDel}"
+					ng-click="user.telephone=''"
+				>&times;</i>
+			</div>
+			<div class="item item-input">
+				<i class="icon placeholder-icon wd-icon wd-mobile-vad"></i>
+				<input type="text"  placeholder="请输入验证码" 
+					ng-model="user.pwords"
+				/>
+				<button class="button button-outline button-positive button-small wd-button-small mr-10">获取验证码</button>
+			</div>
+			<div class="item item-input mt-10">
+				<i class="icon placeholder-icon wd-icon wd-icon-key"></i>
+				<input type="password"  placeholder="密码为6~10位字母与数字的组合" 
+					ng-model="user.password"
+					name="uname"
+					class="has-delete"
+					ng-focus="user.showPassDel=true"
+					ng-blur="user.showPassDel=false"
+				/>
+				<i class="icon wd-icon-delete"
+					 ng-class="{'show':user.password.length&&user.showPassDel}"
+					 ng-click="user.password=''"
+					 >&times;</i>
+			</div>
+			<div class="item item-clear">
+				<label ><input type="checkbox" ng-model="checked"/>我已阅读并同意 </label><a href="">《注册协议》</a>
+			</div>
+			<div class="padding">
+				<button class="button button-block button-disabled"
+					ng-disabled="!user.telephone.length||!user.pwords.length||!user.password.length||checked==false"
+					ng-class="{'button-wd-positive':user.telephone.length&&user.pwords.length&&user.password.length&&checked==true}"
+					ng-click="checkLogin()"
+				>注册</button>
+			</div>
+		</div>
+	</ion-content>
+	<div class="bar bar-footer  wd-bar-clear">
+		<h2 class="title"><a href="#/login" class="wd-positive">已有账号登录</a></h2>
+	</div>
+</div>
